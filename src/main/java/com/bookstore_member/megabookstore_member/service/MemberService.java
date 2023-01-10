@@ -1,10 +1,10 @@
 package com.bookstore_member.megabookstore_member.service;
 
+import com.bookstore_member.megabookstore_member.domain.Member;
 import com.bookstore_member.megabookstore_member.dto.MemberRequest;
 import com.bookstore_member.megabookstore_member.repository.MemberRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import com.bookstore_member.megabookstore_member.domain.Member;
 
 
 @Service
@@ -13,7 +13,7 @@ public class MemberService {
 
     private MemberRepository memberRepository;
 
-    private Long registerMember(MemberRequest memberRequest){
+    private Long registerMember(MemberRequest memberRequest) {
         Member member = Member.builder()
                 .memberNo(memberRequest.getMemberNo())
                 .membershipNo(memberRequest.getMembershipNo())
