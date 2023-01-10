@@ -1,10 +1,7 @@
 package com.bookstore_member.megabookstore_member.domain;
 
 import com.bookstore_member.megabookstore_member.domain.converter.BooleanToYNConverter;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -13,6 +10,7 @@ import java.util.List;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class Member {
