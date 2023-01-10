@@ -45,7 +45,7 @@ public class Member {
     @Column(name = "member_created_at")
     private String memberCreatedAt;
 
-//    @OneToMany
-//    private List<MemberInquiry> inquiries;
+    @OneToMany
+    private List<MemberInquiry> inquiries;
 
 }
