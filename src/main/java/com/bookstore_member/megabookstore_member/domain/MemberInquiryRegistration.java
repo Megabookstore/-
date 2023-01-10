@@ -1,19 +1,40 @@
 package com.bookstore_member.megabookstore_member.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
+import lombok.*;
 
-@IdClass(MemberInquiryId.class)
+import javax.persistence.*;
+import java.io.Serializable;
+
 @Entity
+@NoArgsConstructor
+@Data
 public class MemberInquiryRegistration {
 
-    @Id
-    @Column(name = "member_no")
-    private Long memberNo;
+    @EmbeddedId
+    private Pk pk;
 
-    @Id
-    @Column(name = "member_inquiry_no")
-    private Long memberInquiryNo;
+    @MapsId("memberNo")
+    @ManyToOne
+    @JoinColumn(name = "member_no")
+    private Member member;
+
+    @MapsId("memberInquiryNo")
+    @ManyToOne
+    @JoinColumn(name = "member_inquiry_no")
+    private MemberInquiry memberInquiry;
+
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @EqualsAndHashCode
+    @Getter
+    @Setter
+    @Embeddable
+    public static class Pk implements Serializable {
+
+        @Column(name = "member_no")
+        private Long memberNo;
+
+        @Column(name = "member_inquiry_no")
+        private Long memberInquiryNo;
+    }
 }

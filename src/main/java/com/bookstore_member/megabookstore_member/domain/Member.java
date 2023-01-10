@@ -18,31 +18,35 @@ public class Member {
 
     @Id
     @GeneratedValue
-    @Column(name = "member_no")
+    @Column(nullable = false)
     private Long memberNo;
 
-    @Column(name = "membership_no")
+    @Column(nullable = false)
     private Long membershipNo;
 
+    @Column(unique = true, nullable = false)
     private String id;
 
-    @Column(name = "nick_name")
+    @Column(unique = true, nullable = false)
     private String nickName;
 
-    @Column(name = "is_man")
+    @Column(nullable = false)
     @Convert(converter = BooleanToYNConverter.class)
     private boolean isMan;
 
+    @Column(nullable = false)
     private LocalDateTime birth;
 
+    @Column(nullable = false)
     private String password;
 
-    @Column(name = "phone_number")
+    @Column(unique = true, nullable = false)
     private String phoneNumber;
 
+    @Column(unique = true, nullable = false)
     private String email;
 
-    @Column(name = "member_created_at")
+    @Column(nullable = false)
     private String memberCreatedAt;
 
     @OneToMany
