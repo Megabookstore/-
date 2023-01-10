@@ -21,12 +21,12 @@ public class Member {
     @Column(name = "member_no")
     private Long memberNo;
 
-    @Column(name = "membershipNo")
+    @Column(name = "membership_no")
     private Long membershipNo;
 
     private String id;
 
-    @Column(name = "nickName")
+    @Column(name = "nick_name")
     private String nickName;
 
     @Column(name = "is_man")
