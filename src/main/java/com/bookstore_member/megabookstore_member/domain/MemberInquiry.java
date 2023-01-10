@@ -37,5 +37,4 @@ public class MemberInquiry {
     private InquiryType inquiryType;
 
 
-
 }
