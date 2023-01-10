@@ -8,24 +8,34 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class MemberInquiry {
 
     @Id
     @GeneratedValue
-    @Column(name = "member_inquiry_no")
+    @Column(nullable = false)
     private Long memberInquiryNo;
 
-    @Column(name = "parent_member_inquiry_no")
+    @Column(nullable = false)
     private Long parentMemberInquiryNo;
 
+    @Column(nullable = false)
     private Long memberNo;
 
+    @Column(nullable = false)
     private int inquiryTypeNo;
 
+    @Column(nullable = false)
     private String title;
 
+    @Column(nullable = false)
     private String content;
+
+    @ManyToOne
+    @JoinColumn(name = "inquiry_type_no")
+    private InquiryType inquiryType;
+
+
 
 }

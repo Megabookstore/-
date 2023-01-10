@@ -8,12 +8,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
-@NoArgsConstructor
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class Member {
 
     @Id
@@ -50,6 +51,6 @@ public class Member {
     private String memberCreatedAt;
 
     @OneToMany
-    private List<MemberInquiry> inquiries;
+    private List<MemberInquiry> inquiries = new ArrayList<>();
 
 }
