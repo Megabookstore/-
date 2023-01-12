@@ -1,6 +1,5 @@
 package com.bookstore_member.megabookstore_member.dto;
 
-import com.bookstore_member.megabookstore_member.domain.member.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,11 +7,12 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class MemberRequest {
+public class MemberResponse {
 
     private Long memberNo;
 
@@ -33,5 +33,4 @@ public class MemberRequest {
     private String email;
 
     private String memberCreatedAt;
-
 }
