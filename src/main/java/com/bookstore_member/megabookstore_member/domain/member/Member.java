@@ -1,5 +1,6 @@
-package com.bookstore_member.megabookstore_member.domain;
+package com.bookstore_member.megabookstore_member.domain.member;
 
+import com.bookstore_member.megabookstore_member.domain.MemberInquiry;
 import com.bookstore_member.megabookstore_member.domain.converter.BooleanToYNConverter;
 import lombok.*;
 
@@ -23,10 +24,10 @@ public class Member {
     @Column(nullable = false)
     private Long membershipNo;
 
-    @Column(unique = true, nullable = false)
-    private String id;
+    @Embedded
+    private String memberId;
 
-    @Column(unique = true, nullable = false)
+    @Embedded
     private String nickName;
 
     @Column(nullable = false)
@@ -39,10 +40,10 @@ public class Member {
     @Column(nullable = false)
     private String password;
 
-    @Column(unique = true, nullable = false)
+    @Embedded
     private String phoneNumber;
 
-    @Column(unique = true, nullable = false)
+    @Embedded
     private String email;
 
     @Column(nullable = false)
