@@ -1,5 +1,6 @@
 package com.bookstore_member.megabookstore_member.domain;
 
+import com.bookstore_member.megabookstore_member.domain.member.Member;
 import lombok.*;
 
 import javax.persistence.*;
