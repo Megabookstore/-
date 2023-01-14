@@ -19,8 +19,6 @@ public class MemberId {
 
     private static final String ID_NOT_EMPTY = "아이디는 빈값을 허용하지 않습니다";
 
-    private static final String ID_NOT_DUPLICATED = "아이디는 중복을 허용하지 않습니다";
-
     @Column(nullable = false, unique = true)
     private String memberId;
     public MemberId(String memberId){

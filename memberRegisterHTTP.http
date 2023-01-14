@@ -1,0 +1,15 @@
+POST http://localhost:8080/member/register
+Content-Type: application/json
+
+{
+
+  "memberId" : "twjang",
+  "nickName" : "zz",
+  "password" : "zz",
+  "phoneNumber" : "01092498287",
+  "email" : "dsad@ASdsa"
+
+
+}
+
+

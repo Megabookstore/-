@@ -1,24 +1,25 @@
 package com.bookstore_member.megabookstore_member.dto;
 
 import com.bookstore_member.megabookstore_member.domain.member.Member;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.bookstore_member.megabookstore_member.domain.member.valid.Email;
+import com.bookstore_member.megabookstore_member.domain.member.valid.MemberId;
+import com.bookstore_member.megabookstore_member.domain.member.valid.NickName;
+import com.bookstore_member.megabookstore_member.domain.member.valid.PhoneNumber;
+import lombok.*;
+//import org.springframework.security.core.parameters.P;
 
 import java.time.LocalDateTime;
 
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
+@Getter
 public class MemberRequest {
 
     private Long memberNo;
 
     private Long membershipNo;
 
-    private String id;
+    private String memberId;
 
     private String nickName;
 
@@ -32,6 +33,25 @@ public class MemberRequest {
 
     private String email;
 
-    private String memberCreatedAt;
+    private LocalDateTime memberCreatedAt;
+
+    public Member MemberRequestToMember(){
+        return Member.builder()
+                .memberNo(memberNo)
+                .membershipNo(membershipNo)
+                .memberId(new MemberId(memberId))
+                .nickName(new NickName(nickName))
+                .isMan(isMan)
+                .birth(birth)
+                .password(password)
+                .phoneNumber(new PhoneNumber(phoneNumber))
+                .email(new Email(email))
+                .memberCreatedAt(memberCreatedAt)
+                .build();
+
+    }
+
+
+
 
 }
