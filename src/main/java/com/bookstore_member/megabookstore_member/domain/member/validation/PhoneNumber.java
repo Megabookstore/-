@@ -1,4 +1,4 @@
-package com.bookstore_member.megabookstore_member.domain.member.valid;
+package com.bookstore_member.megabookstore_member.domain.member.validation;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -20,22 +20,19 @@ public class PhoneNumber {
     @Column(nullable = false, unique = true)
     private String phoneNumber;
 
-    public PhoneNumber(String phoneNumber){
+    public PhoneNumber(String phoneNumber) {
         validate(phoneNumber);
         this.phoneNumber = phoneNumber;
     }
 
-    private void validate (String phoneNumber){
+    private void validate(String phoneNumber) {
         validateNickNameNotEmpty(phoneNumber);
     }
 
-    private void validateNickNameNotEmpty(String phoneNumber){
-        if(Objects.isNull(phoneNumber) || phoneNumber.isEmpty()){
+    private void validateNickNameNotEmpty(String phoneNumber) {
+        if (Objects.isNull(phoneNumber) || phoneNumber.isEmpty()) {
             throw new IllegalArgumentException(PHONE_NUMBER_NOT_EMPTY);
         }
     }
-
-
-
 
 }

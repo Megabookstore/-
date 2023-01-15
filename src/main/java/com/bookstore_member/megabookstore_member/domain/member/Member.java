@@ -1,18 +1,19 @@
 package com.bookstore_member.megabookstore_member.domain.member;
 
 import com.bookstore_member.megabookstore_member.domain.converter.BooleanToYNConverter;
-import com.bookstore_member.megabookstore_member.domain.member.valid.Email;
-import com.bookstore_member.megabookstore_member.domain.member.valid.MemberId;
-import com.bookstore_member.megabookstore_member.domain.member.valid.NickName;
-import com.bookstore_member.megabookstore_member.domain.member.valid.PhoneNumber;
+import com.bookstore_member.megabookstore_member.domain.member.validation.Email;
+import com.bookstore_member.megabookstore_member.domain.member.validation.MemberId;
+import com.bookstore_member.megabookstore_member.domain.member.validation.NickName;
+import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Data
@@ -22,7 +23,7 @@ import java.util.List;
 public class Member {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long memberNo;
 
@@ -57,7 +58,7 @@ public class Member {
     private LocalDateTime memberCreatedAt;
 
 
-    public void updateMember(MemberId memberId, NickName nickName, String password , PhoneNumber phoneNumber, Email email){
+    public void updateMember(MemberId memberId, NickName nickName, String password, PhoneNumber phoneNumber, Email email) {
         this.memberId = memberId;
         this.nickName = nickName;
         this.password = password;

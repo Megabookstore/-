@@ -1,12 +1,13 @@
-package com.bookstore_member.megabookstore_member.dto;
+package com.bookstore_member.megabookstore_member.dto.memberDto;
 
 import com.bookstore_member.megabookstore_member.domain.member.Member;
-import com.bookstore_member.megabookstore_member.domain.member.valid.Email;
-import com.bookstore_member.megabookstore_member.domain.member.valid.MemberId;
-import com.bookstore_member.megabookstore_member.domain.member.valid.NickName;
-import com.bookstore_member.megabookstore_member.domain.member.valid.PhoneNumber;
-import lombok.*;
-//import org.springframework.security.core.parameters.P;
+import com.bookstore_member.megabookstore_member.domain.member.validation.Email;
+import com.bookstore_member.megabookstore_member.domain.member.validation.MemberId;
+import com.bookstore_member.megabookstore_member.domain.member.validation.NickName;
+import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -35,7 +36,7 @@ public class MemberRequest {
 
     private LocalDateTime memberCreatedAt;
 
-    public Member MemberRequestToMember(){
+    public Member MemberRequestToMember() {
         return Member.builder()
                 .memberNo(memberNo)
                 .membershipNo(membershipNo)
@@ -50,8 +51,6 @@ public class MemberRequest {
                 .build();
 
     }
-
-
 
 
 }

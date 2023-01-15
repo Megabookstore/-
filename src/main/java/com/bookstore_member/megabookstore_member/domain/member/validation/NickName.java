@@ -1,4 +1,4 @@
-package com.bookstore_member.megabookstore_member.domain.member.valid;
+package com.bookstore_member.megabookstore_member.domain.member.validation;
 
 
 import lombok.EqualsAndHashCode;
@@ -21,17 +21,17 @@ public class NickName {
     @Column(nullable = false, unique = true)
     private String nickName;
 
-    public NickName(String nickName){
+    public NickName(String nickName) {
         validate(nickName);
         this.nickName = nickName;
     }
 
-    private void validate (String nickName){
+    private void validate(String nickName) {
         validateNickNameNotEmpty(nickName);
     }
 
-    private void validateNickNameNotEmpty(String nickName){
-        if(Objects.isNull(nickName) || nickName.isEmpty()){
+    private void validateNickNameNotEmpty(String nickName) {
+        if (Objects.isNull(nickName) || nickName.isEmpty()) {
             throw new IllegalArgumentException(NICKNAME_NOT_EMPTY);
         }
     }

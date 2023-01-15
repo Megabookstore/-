@@ -1,4 +1,4 @@
-package com.bookstore_member.megabookstore_member.domain.member.valid;
+package com.bookstore_member.megabookstore_member.domain.member.validation;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -6,10 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @Embeddable
 @NoArgsConstructor
@@ -21,17 +18,18 @@ public class MemberId {
 
     @Column(nullable = false, unique = true)
     private String memberId;
-    public MemberId(String memberId){
+
+    public MemberId(String memberId) {
         validate(memberId);
         this.memberId = memberId;
     }
 
-    private void validate (String memberId){
+    private void validate(String memberId) {
         validateMemberIdNotEmpty(memberId);
     }
 
-    private void validateMemberIdNotEmpty(String memberId){
-        if(Objects.isNull(memberId) || memberId.isEmpty()){
+    private void validateMemberIdNotEmpty(String memberId) {
+        if (Objects.isNull(memberId) || memberId.isEmpty()) {
             throw new IllegalArgumentException(ID_NOT_EMPTY);
         }
     }
