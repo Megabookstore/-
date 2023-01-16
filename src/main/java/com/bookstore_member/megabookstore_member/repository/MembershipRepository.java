@@ -5,5 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.criteria.CriteriaBuilder;
 
-public interface MembershipRepository extends JpaRepository<MembershipEntity, String> {
+public interface MembershipRepository extends JpaRepository<MembershipEntity, Long> {
+
+
 }
