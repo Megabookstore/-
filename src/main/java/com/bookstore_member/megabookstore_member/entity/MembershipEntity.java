@@ -1,33 +1,37 @@
 package com.bookstore_member.megabookstore_member.entity;
 
-import com.bookstore_member.megabookstore_member.dto.MembershipDto;
+import com.bookstore_member.megabookstore_member.entity.valid.MembershipGrade;
+import com.bookstore_member.megabookstore_member.entity.valid.MembershipPoint;
+import com.bookstore_member.megabookstore_member.entity.valid.MembershipStandardAmount;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.*;
+
 @Entity
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "membership") //db에 table 자동 생성
+
 public class MembershipEntity {
     @Id
-    Integer membership_no;
-    String membership_Grade;
-    Long membership_standard_amount;
-    Long membership_point;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false)
+    private Long membershipNo;
+    @Embedded
+    private MembershipGrade membershipGrade;
+    @Embedded
+    private MembershipStandardAmount membershipStandardAmount;
+    @Embedded
+    private MembershipPoint membershipPoint;
 
-    public MembershipDto toDto(){
-        return MembershipDto.builder()
-                .membership_no(membership_no)
-                .membership_grade(membership_Grade)
-                .membership_standard_amount(membership_standard_amount)
-                .membership_point(membership_point)
-                .build();
+    public void updateMembership(Long membershipNo, MembershipGrade membershipGrade,
+                                 MembershipStandardAmount membershipStandardAmount,
+                                 MembershipPoint membershipPoint){
+        this.membershipNo = membershipNo;
+        this.membershipGrade = membershipGrade;
+        this.membershipStandardAmount = membershipStandardAmount;
+        this.membershipPoint = membershipPoint;
     }
 
 
