@@ -22,7 +22,7 @@ public class MemberRegisterService {
     @Transactional
     public MemberResponse registerMember(MemberRequest memberRequest) {
 
-        memberCheckDuplicateService.validateCheckDuplicate(memberRequest);
+        memberCheckDuplicateService.validCheckMemberDuplicate(memberRequest);
 
         Member member = memberRepository.save(memberRequest.MemberRequestToMember());
 

@@ -12,33 +12,44 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 public class MemberCheckDuplicateService {
 
-    private final MemberRepository memberRepository;
+    private MemberRepository memberRepository;
 
-    public void validateCheckDuplicate(MemberRequest memberRequest) {
-        validateEmailDuplicate(memberRequest.getEmail());
-        validatePhoneNumberDuplicate(memberRequest.getPhoneNumber());
-        validatePhoneNumberDuplicate(memberRequest.getPhoneNumber());
+    public void validCheckMemberDuplicate(MemberRequest memberRequest) {
+        validCheckMemberEmailDuplicate(memberRequest.getEmail());
+        validCheckMemberIdDuplicate(memberRequest.getMemberId());
+        validCheckMemberNickNameDuplicate(memberRequest.getNickName());
+        validCheckMemberPhoneNumberDuplicate(memberRequest.getPhoneNumber());
+
     }
 
-
     @Transactional
-    public void validateMemberIdDuplicate(String memberId) {
-        if (memberRepository.existsByMemberId(memberId)) {
+    public void validCheckMemberIdDuplicate(String id){
+        if(memberRepository.existsByMemberId(id)){
             throw new AlreadyExistsMemberException();
         }
     }
 
     @Transactional
-    public void validateEmailDuplicate(String email) {
-        if (memberRepository.existsByEmail(email)) {
+    public void validCheckMemberEmailDuplicate(String email){
+        if(memberRepository.existsByEmail(email)){
             throw new AlreadyExistsMemberException();
         }
     }
 
     @Transactional
-    public void validatePhoneNumberDuplicate(String phoneNumber) {
-        if (memberRepository.existsByPhoneNumber(phoneNumber)) {
+    public void validCheckMemberNickNameDuplicate(String nickName){
+        if(memberRepository.existsByNickName(nickName)){
             throw new AlreadyExistsMemberException();
         }
     }
+
+    @Transactional
+    public void validCheckMemberPhoneNumberDuplicate(String phoneNumber){
+        if(memberRepository.existsByPhoneNumber(phoneNumber)){
+            throw new AlreadyExistsMemberException();
+        }
+    }
+
+
+
 }
