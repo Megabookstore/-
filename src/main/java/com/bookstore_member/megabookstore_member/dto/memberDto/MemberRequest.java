@@ -18,8 +18,6 @@ public class MemberRequest {
 
     private Long memberNo;
 
-    private Long membershipNo;
-
     private String memberId;
 
     private String nickName;
@@ -39,7 +37,6 @@ public class MemberRequest {
     public Member MemberRequestToMember() {
         return Member.builder()
                 .memberNo(memberNo)
-                .membershipNo(membershipNo)
                 .memberId(new MemberId(memberId))
                 .nickName(new NickName(nickName))
                 .isMan(isMan)

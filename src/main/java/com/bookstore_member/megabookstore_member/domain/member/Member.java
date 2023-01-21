@@ -6,17 +6,14 @@ import com.bookstore_member.megabookstore_member.domain.member.validation.Member
 import com.bookstore_member.megabookstore_member.domain.member.validation.NickName;
 import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,20 +24,17 @@ public class Member {
     @Column(nullable = false)
     private Long memberNo;
 
-    @Column(nullable = false)
-    private Long membershipNo;
-
     @Embedded
     private MemberId memberId;
 
     @Embedded
     private NickName nickName;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     @Convert(converter = BooleanToYNConverter.class)
     private boolean isMan;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime birth;
 
@@ -53,7 +47,7 @@ public class Member {
     @Embedded
     private Email email;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     @CreatedDate
     private LocalDateTime memberCreatedAt;
 
@@ -65,5 +59,7 @@ public class Member {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+
+
 
 }

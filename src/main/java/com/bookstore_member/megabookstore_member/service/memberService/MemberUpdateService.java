@@ -32,6 +32,8 @@ public class MemberUpdateService {
 
         );
 
+        memberRepository.save(member);
+
         return new MemberResponse(member);
 
     }
@@ -39,4 +41,6 @@ public class MemberUpdateService {
     private Member memberFindById(Long id) {
         return memberRepository.findById(id).orElseThrow(NotFoundException::new);
     }
+
+
 }

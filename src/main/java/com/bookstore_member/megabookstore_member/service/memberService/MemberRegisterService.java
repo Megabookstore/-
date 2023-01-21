@@ -16,13 +16,9 @@ public class MemberRegisterService {
 
     private final MemberRepository memberRepository;
 
-    private final MemberCheckDuplicateService memberCheckDuplicateService;
-
 
     @Transactional
     public MemberResponse registerMember(MemberRequest memberRequest) {
-
-        memberCheckDuplicateService.validCheckMemberDuplicate(memberRequest);
 
         Member member = memberRepository.save(memberRequest.MemberRequestToMember());
 

@@ -2,10 +2,10 @@ POST http://localhost:8080/member/register
 Content-Type: application/json
 
 {
-
+  "memberNo" : 1,
   "memberId" : "twjang",
   "nickName" : "zz",
-  "password" : "zz",
+  "password" : "zzsadas",
   "phoneNumber" : "01092498287",
   "email" : "dsad@ASdsa"
 
