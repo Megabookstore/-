@@ -1,9 +1,9 @@
 package com.bookstore_member.megabookstore_member.dto.membershipDto;
 
-import com.bookstore_member.megabookstore_member.entity.MembershipEntity;
-import com.bookstore_member.megabookstore_member.entity.valid.MembershipGrade;
-import com.bookstore_member.megabookstore_member.entity.valid.MembershipPoint;
-import com.bookstore_member.megabookstore_member.entity.valid.MembershipStandardAmount;
+import com.bookstore_member.megabookstore_member.domain.membership.Membership;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipGrade;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipPoint;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipStandardAmount;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,25 +14,25 @@ import lombok.NoArgsConstructor;
 public class MembershipResponse{
     private Long membershipNo;
     private String membershipGrade;
-    private Long membershipStandardAmount;
-    private Long membershipPoint;
+    private Integer membershipStandardAmount;
+    private Integer membershipPoint;
 
-    public MembershipResponse(MembershipEntity membership){
+    public MembershipResponse(Membership membership){
         this.membershipNo = membership.getMembershipNo();
         this.membershipGrade = membershipGrade(membership).getMembershipGrade();
-        this.membershipStandardAmount = membershipStandardAmount(membership).getMembershipStandardAmount();
+        this.membershipStandardAmount = Integer.valueOf(membershipStandardAmount(membership).getMembershipStandardAmount());
         this.membershipPoint = membershipPoint(membership).getMembershipPoint();
     }
 
-    public MembershipGrade membershipGrade(MembershipEntity membershipEntity){
+    public MembershipGrade membershipGrade(Membership membershipEntity){
 
         return membershipEntity.getMembershipGrade();
     }
-    public MembershipPoint membershipPoint(MembershipEntity membershipEntity){
+    public MembershipPoint membershipPoint(Membership membershipEntity){
 
         return membershipEntity.getMembershipPoint();
     }
-    public MembershipStandardAmount membershipStandardAmount(MembershipEntity membershipEntity){
+    public MembershipStandardAmount membershipStandardAmount(Membership membershipEntity){
         return membershipEntity.getMembershipStandardAmount();
     }
 }

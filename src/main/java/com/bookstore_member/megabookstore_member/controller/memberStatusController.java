@@ -19,5 +19,5 @@ public class memberStatusController {
             @RequestBody MemberStatusRequest memberStatusRequest){
         return memberStatusRegisterService.registerMemberStatus(memberStatusRequest);
     }
-            )
+
 }

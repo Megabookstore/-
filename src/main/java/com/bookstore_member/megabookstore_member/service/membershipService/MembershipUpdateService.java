@@ -2,10 +2,10 @@ package com.bookstore_member.megabookstore_member.service.membershipService;
 
 import com.bookstore_member.megabookstore_member.dto.membershipDto.MembershipRequest;
 import com.bookstore_member.megabookstore_member.dto.membershipDto.MembershipResponse;
-import com.bookstore_member.megabookstore_member.entity.MembershipEntity;
-import com.bookstore_member.megabookstore_member.entity.valid.MembershipGrade;
-import com.bookstore_member.megabookstore_member.entity.valid.MembershipPoint;
-import com.bookstore_member.megabookstore_member.entity.valid.MembershipStandardAmount;
+import com.bookstore_member.megabookstore_member.domain.membership.Membership;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipGrade;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipPoint;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipStandardAmount;
 import com.bookstore_member.megabookstore_member.repository.MembershipRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,11 +19,11 @@ public class MembershipUpdateService {
     private final MembershipRepository membershipRepository;
 
     @Transactional
-    public MembershipResponse updateMembership(Long id, MembershipRequest membershipRequest){
+    public MembershipResponse updateMembership(String membershipNo, MembershipRequest membershipRequest){
 //        Member member = memberFindById(Id);
-         MembershipEntity membership= membershipRepository.findById(id).get();
+         Membership membership= membershipRepository.findById(Long.valueOf(membershipNo)).get();
 
-        membership.updateMembership(id, new MembershipGrade(membershipRequest.getMembershipGrade()),
+        membership.updateMembership(membership.getMembershipNo(), new MembershipGrade(membershipRequest.getMembershipGrade()),
                 new MembershipStandardAmount(membershipRequest.getMembershipStandardAmount()),new MembershipPoint(membershipRequest.getMembershipPoint()));
 
         return new MembershipResponse(membership);

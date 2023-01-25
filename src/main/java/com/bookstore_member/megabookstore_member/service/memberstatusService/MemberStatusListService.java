@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 public class MemberStatusListService {
     private final MemberStatusRepository memberStatusRepository;
     public List<MemberStatusResponse> memberStatusList(Pageable pageable){
-        Page<MemberStatus> memberStatus1 = memberStatusRepository.findAll(pageable);
+      Page<MemberStatus> memberStatus1 = memberStatusRepository.findAll(pageable);
 
         return memberStatus1.get().map(memberStatus -> new MemberStatusResponse(memberStatus)).
                 collect(Collectors.toList());

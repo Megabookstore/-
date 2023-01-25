@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/member")
 @Slf4j
 public class memberRegisterController {
-
     private final MemberRegisterService memberRegisterService;
 
     @PostMapping("/register")

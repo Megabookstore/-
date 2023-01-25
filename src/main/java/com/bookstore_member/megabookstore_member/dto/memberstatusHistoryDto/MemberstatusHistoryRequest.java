@@ -18,7 +18,7 @@ public class MemberstatusHistoryRequest {
     private Long memberstatusNo;
     private Long statusChangedReason;
     private LocalDateTime memberstatusHistoryCreatedAt;
-    public MemberstatusHistory tomemberstatusHistory(){
+    public MemberstatusHistory MemberstatusHistoryRequesttomemberstatusHistory(){
         return MemberstatusHistory.builder()
                 .memberstatusHistoryNo(memberstatusHistoryNo)
                 .member(member)

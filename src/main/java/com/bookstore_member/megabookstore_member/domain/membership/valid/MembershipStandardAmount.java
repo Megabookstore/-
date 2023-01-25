@@ -1,4 +1,4 @@
-package com.bookstore_member.megabookstore_member.entity.valid;
+package com.bookstore_member.megabookstore_member.domain.membership.valid;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,11 +16,11 @@ public class MembershipStandardAmount {
 
     private static final String MEMBERSHIP_STANDARD_AMOUNT_NOT_EMPTY = "맴버십 기준 금액는 0보다 작으면 안된다.";
     @Column(nullable = false)
-    private Long membershipStandardAmount;
+    private String membershipStandardAmount;
 
     public MembershipStandardAmount(Long membershipStandardAmount){
-        validate(membershipStandardAmount);
-        this.membershipStandardAmount = membershipStandardAmount;
+        validate(Long.valueOf(membershipStandardAmount));
+        this.membershipStandardAmount = String.valueOf(membershipStandardAmount);
     }
     private void validate(Long membershipStandardAmount){
         validateMembershipNotEmpty(membershipStandardAmount);

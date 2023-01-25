@@ -1,4 +1,4 @@
-package com.bookstore_member.megabookstore_member.entity.valid;
+package com.bookstore_member.megabookstore_member.domain.membership.valid;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

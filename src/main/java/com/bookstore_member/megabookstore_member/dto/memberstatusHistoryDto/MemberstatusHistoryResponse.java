@@ -24,7 +24,7 @@ public class MemberstatusHistoryResponse {
         this.member = memberstatusHistory.getMember();
         this.memberstatusNo = memberstatusHistory.getMemberstatusNo();
         this.memberstatusHistoryCreatedAt = memberstatusHistory.getMemberstatusHistoryCreatedAt();
-        this.statusChangedReason = StatusChangedReason(statusChangedReason);
+        this.statusChangedReason = memberstatusHistory.getStatusChangedReason();
     }
 
     public StatusChangedReason statusChangedReason(MemberstatusHistory memberstatusHistory) {

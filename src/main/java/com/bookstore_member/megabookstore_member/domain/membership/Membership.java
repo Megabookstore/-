@@ -1,8 +1,8 @@
-package com.bookstore_member.megabookstore_member.entity;
+package com.bookstore_member.megabookstore_member.domain.membership;
 
-import com.bookstore_member.megabookstore_member.entity.valid.MembershipGrade;
-import com.bookstore_member.megabookstore_member.entity.valid.MembershipPoint;
-import com.bookstore_member.megabookstore_member.entity.valid.MembershipStandardAmount;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipGrade;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipPoint;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipStandardAmount;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Builder
 
-public class MembershipEntity {
+public class Membership {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
@@ -33,6 +33,7 @@ public class MembershipEntity {
         this.membershipStandardAmount = membershipStandardAmount;
         this.membershipPoint = membershipPoint;
     }
+
 
 
 }
