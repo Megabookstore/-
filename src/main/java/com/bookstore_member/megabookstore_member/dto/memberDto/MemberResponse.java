@@ -19,6 +19,8 @@ public class MemberResponse {
 
     private Long memberNo;
 
+    private Long membershipNo;
+
     private String memberId;
 
     private String nickName;
@@ -36,7 +38,6 @@ public class MemberResponse {
     private LocalDateTime memberCreatedAt;
 
     public MemberResponse(Member member) {
-        this.memberNo = member.getMemberNo();
         this.memberId = memberId(member).getMemberId();
         this.nickName = nickName(member).getNickName();
         this.isMan = member.isMan();

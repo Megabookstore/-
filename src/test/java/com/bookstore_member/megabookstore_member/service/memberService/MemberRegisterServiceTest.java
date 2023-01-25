@@ -6,6 +6,7 @@ import com.bookstore_member.megabookstore_member.domain.member.validation.Email;
 import com.bookstore_member.megabookstore_member.domain.member.validation.MemberId;
 import com.bookstore_member.megabookstore_member.domain.member.validation.NickName;
 import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
+import com.bookstore_member.megabookstore_member.domain.membership.Membership;
 import com.bookstore_member.megabookstore_member.dto.memberDto.MemberRequest;
 import com.bookstore_member.megabookstore_member.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
@@ -36,7 +37,7 @@ class MemberRegisterServiceTest {
         booleanToYNConverter = new BooleanToYNConverter();
 
 
-        member = new Member(1L, new MemberId("twww"), new NickName("ddd"), booleanToYNConverter.convertToEntityAttribute("Y"), LocalDateTime.now(), "tttt", new PhoneNumber("011111"), new Email("sadas@asd"), LocalDateTime.now());
+        member = new Member(1L,new Membership(), new MemberId("twww"), new NickName("ddd"), booleanToYNConverter.convertToEntityAttribute("Y"), LocalDateTime.now(), "tttt", new PhoneNumber("011111"), new Email("sadas@asd"), LocalDateTime.now());
 
         memberRepository.save(member);
 
@@ -67,7 +68,7 @@ class MemberRegisterServiceTest {
     void updateMember() {
 
 
-        MemberRequest memberRequest = new MemberRequest(1L, "t", "ttt", false, LocalDateTime.now(), "123", "123213", "qw@asd", LocalDateTime.now());
+        MemberRequest memberRequest = new MemberRequest(1L,"t", "ttt", false, LocalDateTime.now(), "123", "123213", "qw@asd", LocalDateTime.now());
 
         memberUpdateService.updateMember(1L, memberRequest);
 

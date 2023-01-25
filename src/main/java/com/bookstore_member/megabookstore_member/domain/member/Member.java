@@ -5,6 +5,7 @@ import com.bookstore_member.megabookstore_member.domain.member.validation.Email;
 import com.bookstore_member.megabookstore_member.domain.member.validation.MemberId;
 import com.bookstore_member.megabookstore_member.domain.member.validation.NickName;
 import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
+import com.bookstore_member.megabookstore_member.domain.membership.Membership;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -23,6 +24,9 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false)
     private Long memberNo;
+
+    @OneToOne
+    private Membership membership;
 
     @Embedded
     private MemberId memberId;
@@ -50,6 +54,10 @@ public class Member {
     @Column(nullable = true)
     @CreatedDate
     private LocalDateTime memberCreatedAt;
+
+    public void updateMembership(Membership membership){
+        this.membership = membership;
+    }
 
 
     public void updateMember(MemberId memberId, NickName nickName, String password, PhoneNumber phoneNumber, Email email) {

@@ -2,7 +2,7 @@ package com.bookstore_member.megabookstore_member.dto.membershipHistoryDto;
 
 import com.bookstore_member.megabookstore_member.domain.member.Member;
 import com.bookstore_member.megabookstore_member.domain.membership_history.MembershipHistory;
-import com.bookstore_member.megabookstore_member.domain.membership_history.validation.MonthlyUsageAmount;
+import com.bookstore_member.megabookstore_member.domain.membership_history.valid.MonthlyUsageAmount;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

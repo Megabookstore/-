@@ -15,18 +15,19 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class MembershipPoint {
     private static final String MEMBERSHIPPOINT_NOT_EMPTY = "지급포인트는 빈값을 허용하지 않습니다.";
-    @Column(nullable = false)
+    @Column(nullable = true)
     @ColumnDefault("0")
-    private Integer membershipPoint;
+    private Long membershipPoint;
     public MembershipPoint(Long membershipPoint){
-        validate(membershipPoint);
+//        validate(membershipPoint);
+        this.membershipPoint = membershipPoint;
     }
-    private void validate(Long membershipPoint){
-        validateMembershipPointNotEmpty(membershipPoint);
-    }
-    private void validateMembershipPointNotEmpty(Long membershipPoint){
-        if(Objects.isNull(membershipPoint)||membershipPoint < 0){
-            throw new IllegalArgumentException(MEMBERSHIPPOINT_NOT_EMPTY);
-        }
-    }
+//    private void validate(Long membershipPoint){
+//        validateMembershipPointNotEmpty(membershipPoint);
+//    }
+//    private void validateMembershipPointNotEmpty(Long membershipPoint){
+//        if(Objects.isNull(membershipPoint)||membershipPoint < 0){
+//            throw new IllegalArgumentException(MEMBERSHIPPOINT_NOT_EMPTY);
+//        }
+//    }
 }

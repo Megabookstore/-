@@ -14,20 +14,20 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class MembershipGrade {
     private static final String MEMBERSHIPGRADE_NOT_EMPTY = "회원등급 이름은 빈 값을 허용하지 않습니다.";
-    @Column(nullable = false, unique = true)
+    @Column(nullable = true, unique = true)
     private String membershipGrade;
 
     public MembershipGrade(String membershipGrade){
-        validate(membershipGrade);
+//        validate(membershipGrade);
         this.membershipGrade = membershipGrade;
     }
-    private void validate(String membershipGrade){
-        validateMembershipGradeNotEmpty(membershipGrade);
-    }
-    private void validateMembershipGradeNotEmpty(String membershipGrade){
-        if(Objects.isNull(membershipGrade)||membershipGrade.isEmpty()){
-            throw new IllegalArgumentException(MEMBERSHIPGRADE_NOT_EMPTY);
-        }
-    }
+//    private void validate(String membershipGrade){
+//        validateMembershipGradeNotEmpty(membershipGrade);
+//    }
+//    private void validateMembershipGradeNotEmpty(String membershipGrade){
+//        if(Objects.isNull(membershipGrade)||membershipGrade.isEmpty()){
+//            throw new IllegalArgumentException(MEMBERSHIPGRADE_NOT_EMPTY);
+//        }
+//    }
 
 }

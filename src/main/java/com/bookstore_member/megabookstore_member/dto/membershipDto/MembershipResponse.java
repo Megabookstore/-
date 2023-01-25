@@ -14,13 +14,13 @@ import lombok.NoArgsConstructor;
 public class MembershipResponse{
     private Long membershipNo;
     private String membershipGrade;
-    private Integer membershipStandardAmount;
-    private Integer membershipPoint;
+    private Long membershipStandardAmount;
+    private Long membershipPoint;
 
     public MembershipResponse(Membership membership){
         this.membershipNo = membership.getMembershipNo();
         this.membershipGrade = membershipGrade(membership).getMembershipGrade();
-        this.membershipStandardAmount = Integer.valueOf(membershipStandardAmount(membership).getMembershipStandardAmount());
+        this.membershipStandardAmount = membershipStandardAmount(membership).getMembershipStandardAmount();
         this.membershipPoint = membershipPoint(membership).getMembershipPoint();
     }
 

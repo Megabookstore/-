@@ -11,14 +11,14 @@ import java.awt.print.Pageable;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
-@RequiredArgsConstructor
-public class MemberStatusListService {
-    private final MemberStatusRepository memberStatusRepository;
-    public List<MemberStatusResponse> memberStatusList(Pageable pageable){
-      Page<MemberStatus> memberStatus1 = memberStatusRepository.findAll(pageable);
-
-        return memberStatus1.get().map(memberStatus -> new MemberStatusResponse(memberStatus)).
-                collect(Collectors.toList());
-    }
-}
+//@Service
+//@RequiredArgsConstructor
+//public class MemberStatusListService {
+//    private final MemberStatusRepository memberStatusRepository;
+//    public List<MemberStatusResponse> memberStatusList(Pageable pageable){
+//      Page<MemberStatus> memberStatus1 = memberStatusRepository.findAll(pageable);
+//
+//        return memberStatus1.get().map(memberStatus -> new MemberStatusResponse(memberStatus)).
+//                collect(Collectors.toList());
+//    }
+//}

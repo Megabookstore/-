@@ -2,7 +2,9 @@ package com.bookstore_member.megabookstore_member.domain.membership_history;
 
 
 import com.bookstore_member.megabookstore_member.domain.member.Member;
-import com.bookstore_member.megabookstore_member.domain.membership_history.validation.MonthlyUsageAmount;
+import com.bookstore_member.megabookstore_member.domain.membership.Membership;
+import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipPoint;
+import com.bookstore_member.megabookstore_member.domain.membership_history.valid.MonthlyUsageAmount;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -24,10 +26,10 @@ public class MembershipHistory {
     private Long membershipHistoryNo;
 
     @ManyToOne
-    @JoinColumn(name = "memberId")
     private Member member;
 
-    //private Long membershipNo;
+    @ManyToOne
+    private Membership membership;
 
     @Embedded
     private MonthlyUsageAmount monthlyUsageAmount;

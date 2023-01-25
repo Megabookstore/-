@@ -18,6 +18,8 @@ public class MemberRequest {
 
     private Long memberNo;
 
+
+
     private String memberId;
 
     private String nickName;
