@@ -6,5 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MembershipRepository extends JpaRepository<Membership, Long> {
 
+    boolean existsByMembershipGrade(String MembershipGrade);
+    boolean existsByMembershipPoint(Long MembershipPoint);
+    boolean existsByMembershipStandardAmount(Long MembershipStandardAmount);
+
 
 }

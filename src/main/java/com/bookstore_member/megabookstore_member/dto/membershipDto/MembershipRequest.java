@@ -18,7 +18,7 @@ public class MembershipRequest {
     private Long membershipStandardAmount;
     private Long membershipPoint;
 
-    public Membership MemberRequestToMember(){
+    public Membership MembershipRequestToMembership(){
         return Membership.builder()
                 .membershipNo(membershipNo)
                 .membershipGrade(new MembershipGrade(membershipGrade))

@@ -56,6 +56,7 @@ public class Member {
     private LocalDateTime memberCreatedAt;
 
     public void updateMembership(Membership membership){
+
         this.membership = membership;
     }
 
@@ -67,7 +68,5 @@ public class Member {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
-
-
 
 }

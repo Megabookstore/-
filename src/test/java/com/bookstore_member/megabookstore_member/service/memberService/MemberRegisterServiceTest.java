@@ -60,7 +60,6 @@ class MemberRegisterServiceTest {
         Member find = memberRepository.findById(1L).get();
 
         Assertions.assertThat(find.getMemberId()).isEqualTo(new MemberId("twww"));
-
     }
 
     @DisplayName("회원 수정 테스트")

@@ -1,5 +1,6 @@
 package com.bookstore_member.megabookstore_member.service.membershipService;
 
+import com.bookstore_member.megabookstore_member.domain.member.Member;
 import com.bookstore_member.megabookstore_member.domain.membership.Membership;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipGrade;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipPoint;
@@ -24,7 +25,8 @@ public class MembershipService {
     public MembershipResponse addMembership(MembershipRequest membershipRequest){
 
 
-        Membership save = membershipRepository.save(membershipRequest.MemberRequestToMember());
+        Membership save = membershipRepository.save(membershipRequest.MembershipRequestToMembership());
         return new MembershipResponse(save);
     }
+
 }

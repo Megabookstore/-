@@ -32,8 +32,8 @@ public class Membership {
         this.membershipGrade = membershipGrade;
         this.membershipStandardAmount = membershipStandardAmount;
         this.membershipPoint = membershipPoint;
-    }
 
+    }
 
 
 }
