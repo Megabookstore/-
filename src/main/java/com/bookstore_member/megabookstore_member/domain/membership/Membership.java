@@ -3,6 +3,7 @@ package com.bookstore_member.megabookstore_member.domain.membership;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipGrade;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipPoint;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipStandardAmount;
+import com.bookstore_member.megabookstore_member.domain.membership_history.MembershipHistory;
 import lombok.*;
 
 import javax.persistence.*;

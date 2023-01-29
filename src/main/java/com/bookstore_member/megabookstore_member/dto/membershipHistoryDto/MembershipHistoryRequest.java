@@ -19,7 +19,7 @@
 //
 //    private Long monthlyUsageAmount;
 //
-//    private LocalDateTime membershipHistoryCreateAt;
+//    private String membershipHistoryCreateAt;
 //
 //    public MembershipHistory toMembershipHistory() {
 //        return MembershipHistory.builder()

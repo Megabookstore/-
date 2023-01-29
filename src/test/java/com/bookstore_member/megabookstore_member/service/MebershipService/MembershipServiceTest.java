@@ -10,7 +10,6 @@ import com.bookstore_member.megabookstore_member.domain.membership.Membership;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipGrade;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipPoint;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipStandardAmount;
-import com.bookstore_member.megabookstore_member.dto.memberDto.MemberRequest;
 import com.bookstore_member.megabookstore_member.dto.membershipDto.MembershipRequest;
 import com.bookstore_member.megabookstore_member.repository.MemberRepository;
 import com.bookstore_member.megabookstore_member.service.membershipService.MembershipService;
@@ -21,10 +20,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import javax.persistence.Id;
 import java.time.LocalDateTime;
-import java.util.Optional;
+
 
 @SpringBootTest
 public class MembershipServiceTest {
