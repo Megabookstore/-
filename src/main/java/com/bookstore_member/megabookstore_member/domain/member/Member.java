@@ -34,11 +34,11 @@ public class Member {
     @Embedded
     private NickName nickName;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     @Convert(converter = BooleanToYNConverter.class)
     private boolean isMan;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDateTime birth;
 
@@ -51,7 +51,8 @@ public class Member {
     @Embedded
     private Email email;
 
-    @Column(nullable = true)
+    @Column(nullable = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @CreatedDate
     private LocalDateTime memberCreatedAt;
 

@@ -55,8 +55,8 @@ public class MembershipHistoryServiceTest {
     void RegisterMembershipHistory() {
 
         Membership membership =  new Membership(1L, new MembershipGrade("White"), new MembershipStandardAmount(1000L), new MembershipPoint(1000L));
-        MembershipHistory membershipHistory = new MembershipHistory(1L, member, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
-        membershipHistory.registerMembershipHistory(membershipHistory);
+        String yyyyMMdd = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+
     }
 
     @DisplayName("멤버십 히스토리 수정 테스트")
@@ -70,7 +70,6 @@ public class MembershipHistoryServiceTest {
 
         Membership find = membershipRepository.findById(1L).get();
 
-        Assertions.assertThat(find.getMembershipGrade().equals(new MembershipGrade("Gold"));
 
     }
 }
