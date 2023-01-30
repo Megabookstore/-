@@ -20,6 +20,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.time.LocalDateTime;
 
 
@@ -34,7 +35,7 @@ public class MembershipServiceTest {
     @Autowired
     MembershipUpdateService membershipUpdateService;
 
-   private Member member;
+    private Member member;
     private BooleanToYNConverter booleanToYNConverter;
 
     @BeforeEach
@@ -53,10 +54,8 @@ public class MembershipServiceTest {
 
         Member member1 = memberRepository.findById(1L).get();
         Membership white = new Membership(1L, new MembershipGrade("White"), new MembershipStandardAmount(10000L), new MembershipPoint(1000L));
-//        MembershipRequest membershipRequest = new MembershipRequest();
         member1.updateMembership(white);
 
-//        membershipService.addMembership(membershipRequest);
         //then
         Assertions.assertThat(member1.getMembership().getMembershipGrade()).isEqualTo(new MembershipGrade("White"));
 
@@ -64,7 +63,7 @@ public class MembershipServiceTest {
 
     @DisplayName("멤버십 수정 테스트")
     @Test
-    void updateMembership(){
+    void updateMembership() {
 
         Member member1 = memberRepository.findById(1L).get();
 

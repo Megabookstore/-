@@ -7,11 +7,15 @@ import com.bookstore_member.megabookstore_member.domain.member.validation.NickNa
 import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
 import com.bookstore_member.megabookstore_member.domain.membership.Membership;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 @Entity
 @Getter
@@ -56,18 +60,33 @@ public class Member {
     @CreatedDate
     private LocalDateTime memberCreatedAt;
 
-    public void updateMembership(Membership membership){
+    public void updateMembership(Membership membership) {
 
         this.membership = membership;
     }
 
 
     public void updateMember(MemberId memberId, NickName nickName, String password, PhoneNumber phoneNumber, Email email) {
-        this.memberId = memberId;
-        this.nickName = nickName;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+        if (Objects.nonNull(memberId)) {
+            this.memberId = memberId;
+        }
+
+        if (Objects.nonNull(nickName)) {
+            this.nickName = nickName;
+        }
+
+        if (Objects.nonNull(password)) {
+            this.password = password;
+        }
+
+        if (Objects.nonNull(phoneNumber)) {
+            this.phoneNumber = phoneNumber;
+        }
+
+        if (Objects.nonNull(email)) {
+            this.email = email;
+        }
+
     }
 
 }

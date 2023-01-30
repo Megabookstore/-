@@ -1,5 +1,7 @@
 package com.bookstore_member.megabookstore_member.domain.member.validation;
 
+import com.bookstore_member.megabookstore_member.exception.err_code.ErrorCode;
+import com.sun.istack.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,10 +16,11 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class MemberId {
 
-    private static final String ID_NOT_EMPTY = "아이디는 빈값을 허용하지 않습니다";
 
     @Column(nullable = false, unique = true)
+    @NotNull
     private String memberId;
+
 
     public MemberId(String memberId) {
         validate(memberId);
@@ -30,7 +33,7 @@ public class MemberId {
 
     private void validateMemberIdNotEmpty(String memberId) {
         if (Objects.isNull(memberId) || memberId.isEmpty()) {
-            throw new IllegalArgumentException(ID_NOT_EMPTY);
+            throw new IllegalArgumentException(ErrorCode.ID_NOT_EMPTY.getErrCode());
         }
     }
 

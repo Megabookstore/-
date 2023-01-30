@@ -20,8 +20,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MembershipHistory {
-    @Id
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long membershipHistoryNo;
 

@@ -1,11 +1,13 @@
 package com.bookstore_member.megabookstore_member.domain.member.validation;
 
+import com.bookstore_member.megabookstore_member.exception.err_code.ErrorCode;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Embeddable
@@ -14,10 +16,9 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class PhoneNumber {
 
-    private static final String PHONE_NUMBER_NOT_EMPTY = "휴대폰 번호는 빈값을 허용하지 않습니다";
-
 
     @Column(nullable = false, unique = true)
+    @NotBlank
     private String phoneNumber;
 
     public PhoneNumber(String phoneNumber) {
@@ -31,7 +32,7 @@ public class PhoneNumber {
 
     private void validateNickNameNotEmpty(String phoneNumber) {
         if (Objects.isNull(phoneNumber) || phoneNumber.isEmpty()) {
-            throw new IllegalArgumentException(PHONE_NUMBER_NOT_EMPTY);
+            throw new IllegalArgumentException(ErrorCode.PHONE_NUMBER_NOT_EMPTY.getErrCode());
         }
     }
 

@@ -26,6 +26,8 @@ class MemberRegisterServiceTest {
     @Autowired
     MemberRepository memberRepository;
 
+    //권한 ->
+
     @Autowired
     MemberUpdateService memberUpdateService;
 
@@ -74,6 +76,7 @@ class MemberRegisterServiceTest {
         Member findMember = memberRepository.findById(1L).get();
 
         Assertions.assertThat(findMember.getMemberId()).isEqualTo(new MemberId("t"));
+
 
     }
 

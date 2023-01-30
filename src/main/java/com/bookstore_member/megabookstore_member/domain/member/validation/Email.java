@@ -1,11 +1,15 @@
 package com.bookstore_member.megabookstore_member.domain.member.validation;
 
+import com.bookstore_member.megabookstore_member.exception.err_code.ErrorCode;
+import com.sun.istack.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.lang.NonNull;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Embeddable
@@ -14,10 +18,10 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class Email {
 
-    private static final String EMAIL_NOT_EMPTY = "닉네임은 빈값을 허용하지 않습니다";
-
 
     @Column(nullable = false, unique = true)
+    @NotBlank
+    @javax.validation.constraints.Email
     private String email;
 
     public Email(String email) {
@@ -31,7 +35,7 @@ public class Email {
 
     private void validateEmailNotEmpty(String email) {
         if (Objects.isNull(email) || email.isEmpty()) {
-            throw new IllegalArgumentException(EMAIL_NOT_EMPTY);
+            throw new IllegalArgumentException(ErrorCode.EMAIL_NOT_EMPTY.getErrCode());
         }
     }
 

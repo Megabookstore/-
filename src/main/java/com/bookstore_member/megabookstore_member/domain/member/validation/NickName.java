@@ -1,9 +1,12 @@
 package com.bookstore_member.megabookstore_member.domain.member.validation;
 
 
+import com.bookstore_member.megabookstore_member.exception.err_code.ErrorCode;
+import com.sun.istack.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.validation.annotation.Validated;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -15,11 +18,11 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class NickName {
 
-    private static final String NICKNAME_NOT_EMPTY = "닉네임은 빈값을 허용하지 않습니다";
-
 
     @Column(nullable = false, unique = true)
+    @NotNull
     private String nickName;
+
 
     public NickName(String nickName) {
         validate(nickName);
@@ -32,7 +35,7 @@ public class NickName {
 
     private void validateNickNameNotEmpty(String nickName) {
         if (Objects.isNull(nickName) || nickName.isEmpty()) {
-            throw new IllegalArgumentException(NICKNAME_NOT_EMPTY);
+            throw new IllegalArgumentException(ErrorCode.NICKNAME_NOT_EMPTY.getErrCode());
         }
     }
 
