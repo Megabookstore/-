@@ -31,18 +31,15 @@ public class MembershipHistory {
     @ManyToOne
     private Membership membership;
 
-    private Long monthlyUsageAmount = 0L ;
-
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @CreatedDate
     private LocalDateTime membershipHistoryCreateAt;
 
-    public void updateMonthlyUsageAmount(Long usageMoney){
-        this.monthlyUsageAmount += usageMoney;
+    public void updateMonthlyUsageAmount(Long usageMoney) {
     }
 
 
-
-
+    public void updateMembershipHistory(Long membershipHistoryNo, Member member) {
+    }
 }

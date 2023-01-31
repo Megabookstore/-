@@ -29,9 +29,7 @@ public class MembershipHistoryUpdateService {
 
         MembershipHistory membershipHistory = membershipHistoryRepository.findById(memberId).get();
 
-        membershipHistory.updateMembershipHistory(membershipHistory.getMembershipHistoryNo(), membershipHistory.getMember(),
-                new Membership(membership.getMembershipNo());
-        membershipHistory.updateMembershipHistory(membershipHistory);
+        membershipHistory.updateMembershipHistory(membershipHistory.getMembershipHistoryNo(), membershipHistory.getMember());
 
         return new MembershipResponse(membership);
     }

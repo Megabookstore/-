@@ -22,9 +22,6 @@ public class MembershipService {
 
     @Transactional
     public MembershipResponse addMembership(MembershipRequest membershipRequest){
-
-
-        Membership save = membershipRepository.save(membershipRequest.MemberRequestToMember());
-        return new MembershipResponse(save);
+        return null;
     }
 }

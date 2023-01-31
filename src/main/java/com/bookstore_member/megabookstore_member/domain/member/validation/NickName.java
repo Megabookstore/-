@@ -3,6 +3,8 @@ package com.bookstore_member.megabookstore_member.domain.member.validation;
 
 import com.bookstore_member.megabookstore_member.exception.err_code.ErrorCode;
 import com.sun.istack.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,11 +20,10 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class NickName {
 
-
     @Column(nullable = false, unique = true)
-    @NotNull
+    @NotBlank
+    @Size(min = 2, max = 15)
     private String nickName;
-
 
     public NickName(String nickName) {
         validate(nickName);

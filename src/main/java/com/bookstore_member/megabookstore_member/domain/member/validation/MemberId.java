@@ -2,6 +2,9 @@ package com.bookstore_member.megabookstore_member.domain.member.validation;
 
 import com.bookstore_member.megabookstore_member.exception.err_code.ErrorCode;
 import com.sun.istack.NotNull;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,11 +19,13 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class MemberId {
 
+    public static final String ID_PATTERN = "^[a-zA-Z0-9]*$";
 
     @Column(nullable = false, unique = true)
-    @NotNull
+    @NotBlank
+    @Size(min = 8)
+    @Pattern(regexp = ID_PATTERN)
     private String memberId;
-
 
     public MemberId(String memberId) {
         validate(memberId);

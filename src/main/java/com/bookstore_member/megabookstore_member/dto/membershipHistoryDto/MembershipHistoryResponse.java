@@ -25,7 +25,6 @@ public class MembershipHistoryResponse {
     public MembershipHistoryResponse(MembershipHistory membershipHistory) {
         this.membershipHistoryNo = membershipHistory.getMembershipHistoryNo();
         this.member = membershipHistory.getMember();
-        this.monthlyUsageAmount = membershipHistory.getMonthlyUsageAmount();
         this.membershipHistoryCreateAt = membershipHistory.getMembershipHistoryCreateAt();
     }
 

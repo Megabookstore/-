@@ -25,7 +25,6 @@ public class MembershipHistoryRequest {
         return MembershipHistory.builder()
                 .membershipHistoryNo(membershipHistoryNo)
                 .member(member)
-                .monthlyUsageAmount(monthlyUsageAmount)
                 .membershipHistoryCreateAt(LocalDateTime.parse(membershipHistoryCreateAt))
                 .build();
 

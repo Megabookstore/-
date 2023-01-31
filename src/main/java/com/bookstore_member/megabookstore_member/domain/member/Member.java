@@ -61,7 +61,6 @@ public class Member {
     private LocalDateTime memberCreatedAt;
 
     public void updateMembership(Membership membership) {
-
         this.membership = membership;
     }
 

@@ -18,7 +18,6 @@ import java.util.Objects;
 @EqualsAndHashCode
 public class Email {
 
-
     @Column(nullable = false, unique = true)
     @NotBlank
     @javax.validation.constraints.Email

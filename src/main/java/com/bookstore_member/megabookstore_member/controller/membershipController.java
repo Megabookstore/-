@@ -17,14 +17,5 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/membership")
 public class membershipController {
-    public static void main(String[] args) {
-
-        List <Member> list = new ArrayList();
-
-        Member member = new Member();
-
-        list.add(member);
-
-    }
 
 }
