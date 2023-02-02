@@ -2,7 +2,6 @@ package com.bookstore_member.megabookstore_member.domain.membership_history;
 
 
 import com.bookstore_member.megabookstore_member.domain.member.Member;
-import com.bookstore_member.megabookstore_member.domain.membership.Membership;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
@@ -28,8 +27,8 @@ public class MembershipHistory {
     @ManyToOne
     private Member member;
 
-    @ManyToOne
-    private Membership membership;
+//    @ManyToOne
+//    private Membership membership;
 
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")

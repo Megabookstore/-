@@ -1,6 +1,6 @@
 package com.bookstore_member.megabookstore_member.dto.membershipDto;
 
-import com.bookstore_member.megabookstore_member.domain.membership.Membership;
+//import com.bookstore_member.megabookstore_member.domain.membership.Membership;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipGrade;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipPoint;
 import com.bookstore_member.megabookstore_member.domain.membership.valid.MembershipStandardAmount;
@@ -18,13 +18,13 @@ public class MembershipRequest {
     private Long membershipStandardAmount;
     private Long membershipPoint;
 
-    public Membership MembershipRequestToMembership(){
-        return Membership.builder()
-                .membershipNo(membershipNo)
-                .membershipGrade(new MembershipGrade(membershipGrade))
-                .membershipStandardAmount(new MembershipStandardAmount(membershipStandardAmount))
-                .membershipPoint(new MembershipPoint(membershipPoint))
-                .build();
-    }
+//    public Membership MembershipRequestToMembership(){
+//        return Membership.builder()
+//                .membershipNo(membershipNo)
+//                .membershipGrade(new MembershipGrade(membershipGrade))
+//                .membershipStandardAmount(new MembershipStandardAmount(membershipStandardAmount))
+//                .membershipPoint(new MembershipPoint(membershipPoint))
+//                .build();
+//    }
 
 }

@@ -5,7 +5,6 @@ import com.bookstore_member.megabookstore_member.domain.member.validation.Email;
 import com.bookstore_member.megabookstore_member.domain.member.validation.MemberId;
 import com.bookstore_member.megabookstore_member.domain.member.validation.NickName;
 import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
-import com.bookstore_member.megabookstore_member.domain.membership.Membership;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -15,13 +14,15 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Getter
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 public class Member {
 
     @Id
@@ -29,8 +30,8 @@ public class Member {
     @Column(nullable = false)
     private Long memberNo;
 
-    @OneToOne
-    private Membership membership;
+//    @OneToOne
+//    private Membership membership;
 
     @Embedded
     private MemberId memberId;
@@ -55,14 +56,34 @@ public class Member {
     @Embedded
     private Email email;
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Builder.Default
+    private Set<Role> roles = new HashSet<>();
+
+    public void addMemberRole(Role role) {
+        roles.add(role);
+    }
+
+    public Member(Long memberNo,  MemberId memberId, NickName nickName, boolean isMan, LocalDateTime birth, String password, PhoneNumber phoneNumber, Email email, LocalDateTime memberCreatedAt) {
+        this.memberNo = memberNo;
+        this.memberId = memberId;
+        this.nickName = nickName;
+        this.isMan = isMan;
+        this.birth = birth;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.memberCreatedAt = memberCreatedAt;
+    }
+
     @Column(nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @CreatedDate
     private LocalDateTime memberCreatedAt;
 
-    public void updateMembership(Membership membership) {
-        this.membership = membership;
-    }
+//    public void updateMembership(Membership membership) {
+//        this.membership = membership;
+//    }
 
 
     public void updateMember(MemberId memberId, NickName nickName, String password, PhoneNumber phoneNumber, Email email) {

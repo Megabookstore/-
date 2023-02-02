@@ -2,11 +2,11 @@ package com.bookstore_member.megabookstore_member.service.memberService;
 
 import com.bookstore_member.megabookstore_member.domain.converter.BooleanToYNConverter;
 import com.bookstore_member.megabookstore_member.domain.member.Member;
+import com.bookstore_member.megabookstore_member.domain.member.Role;
 import com.bookstore_member.megabookstore_member.domain.member.validation.Email;
 import com.bookstore_member.megabookstore_member.domain.member.validation.MemberId;
 import com.bookstore_member.megabookstore_member.domain.member.validation.NickName;
 import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
-import com.bookstore_member.megabookstore_member.domain.membership.Membership;
 import com.bookstore_member.megabookstore_member.dto.memberDto.MemberRequest;
 import com.bookstore_member.megabookstore_member.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
@@ -18,6 +18,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.Set;
 
 
 @SpringBootTest
@@ -38,8 +39,20 @@ class MemberRegisterServiceTest {
     void setUp() {
         booleanToYNConverter = new BooleanToYNConverter();
 
+        member = Member.builder()
+                .memberNo(1L)
+                .memberId(new MemberId("twwwasd8232"))
+                .nickName(new NickName("sadas"))
+                .isMan(booleanToYNConverter.convertToEntityAttribute("Y"))
+                .birth(LocalDateTime.now())
+                .password("asdasd")
+                .phoneNumber(new PhoneNumber("010-2323-23232"))
+                .email(new Email("asdas@asDasd"))
+                .memberCreatedAt(LocalDateTime.now())
+                .build();
 
-        member = new Member(1L,new Membership(), new MemberId("twww"), new NickName("ddd"), booleanToYNConverter.convertToEntityAttribute("Y"), LocalDateTime.now(), "tttt", new PhoneNumber("011111"), new Email("sadas@asd"), LocalDateTime.now());
+
+        member.addMemberRole(Role.NORMAL);
 
         memberRepository.save(member);
 
@@ -51,7 +64,17 @@ class MemberRegisterServiceTest {
 
         Member findMember = memberRepository.findById(1L).get();
 
-        Assertions.assertThat(findMember.getNickName()).isEqualTo(new NickName("ddd"));
+        Assertions.assertThat(findMember.getNickName()).isEqualTo(new NickName("sadas"));
+
+        Set<Role> roles = findMember.getRoles();
+
+        for (Role role : roles) {
+            Assertions.assertThat(role).isEqualTo(Role.NORMAL);
+
+        }
+
+
+
 
     }
 
@@ -61,7 +84,7 @@ class MemberRegisterServiceTest {
 
         Member find = memberRepository.findById(1L).get();
 
-        Assertions.assertThat(find.getMemberId()).isEqualTo(new MemberId("twww"));
+        Assertions.assertThat(find.getMemberId()).isEqualTo(new MemberId("twwwasd8232"));
     }
 
     @DisplayName("회원 수정 테스트")
@@ -69,7 +92,7 @@ class MemberRegisterServiceTest {
     void updateMember() {
 
 
-        MemberRequest memberRequest = new MemberRequest(1L,"t", "ttt", false, LocalDateTime.now(), "123", "123213", "qw@asd", LocalDateTime.now());
+        MemberRequest memberRequest = new MemberRequest(1L, "t", "ttt", false, LocalDateTime.now(), "123", "123213", "qw@asd", LocalDateTime.now());
 
         memberUpdateService.updateMember(1L, memberRequest);
 
@@ -91,7 +114,6 @@ class MemberRegisterServiceTest {
         Optional<Member> byId = memberRepository.findById(1L);
 
         org.junit.jupiter.api.Assertions.assertFalse(byId.isPresent());
-
 
     }
 
