@@ -8,8 +8,13 @@ import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneN
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 
 @NoArgsConstructor
@@ -37,6 +42,8 @@ public class MemberResponse {
 
     private LocalDateTime memberCreatedAt;
 
+    private Set<GrantedAuthority> roles = new HashSet<>();
+
     public MemberResponse(Member member) {
         this.memberId = memberId(member).getMemberId();
         this.nickName = nickName(member).getNickName();
@@ -46,6 +53,9 @@ public class MemberResponse {
         this.phoneNumber = phoneNumber(member).getPhoneNumber();
         this.email = email(member).getEmail();
         this.memberCreatedAt = member.getMemberCreatedAt();
+        this.roles = member.getRoles().stream().
+                map(role -> new SimpleGrantedAuthority("ROLE_" + role.getValue())).
+                collect(Collectors.toSet());
     }
 
 

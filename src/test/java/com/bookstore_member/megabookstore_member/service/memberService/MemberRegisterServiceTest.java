@@ -52,7 +52,7 @@ class MemberRegisterServiceTest {
                 .build();
 
 
-        member.addMemberRole(Role.NORMAL);
+        member.addMemberRole(Role.NORMAL); //회원가입 할 때 일반 유저인지 관리자인지 구분 필요
 
         memberRepository.save(member);
 
@@ -64,13 +64,13 @@ class MemberRegisterServiceTest {
 
         Member findMember = memberRepository.findById(1L).get();
 
+
         Assertions.assertThat(findMember.getNickName()).isEqualTo(new NickName("sadas"));
 
         Set<Role> roles = findMember.getRoles();
 
         for (Role role : roles) {
             Assertions.assertThat(role).isEqualTo(Role.NORMAL);
-
         }
 
 

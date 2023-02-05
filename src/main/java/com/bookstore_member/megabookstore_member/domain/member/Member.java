@@ -58,6 +58,7 @@ public class Member {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
+    @Enumerated(EnumType.STRING)
     private Set<Role> roles = new HashSet<>();
 
     public void addMemberRole(Role role) {
