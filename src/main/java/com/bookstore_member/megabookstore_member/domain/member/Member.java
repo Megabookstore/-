@@ -82,9 +82,6 @@ public class Member {
     @CreatedDate
     private LocalDateTime memberCreatedAt;
 
-//    public void updateMembership(Membership membership) {
-//        this.membership = membership;
-//    }
 
 
     public void updateMember(MemberId memberId, NickName nickName, String password, PhoneNumber phoneNumber, Email email) {
