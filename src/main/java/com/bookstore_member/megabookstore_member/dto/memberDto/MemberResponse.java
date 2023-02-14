@@ -2,7 +2,6 @@ package com.bookstore_member.megabookstore_member.dto.memberDto;
 
 import com.bookstore_member.megabookstore_member.domain.member.Member;
 import com.bookstore_member.megabookstore_member.domain.member.validation.Email;
-import com.bookstore_member.megabookstore_member.domain.member.validation.MemberId;
 import com.bookstore_member.megabookstore_member.domain.member.validation.NickName;
 import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
 import lombok.AllArgsConstructor;
@@ -45,7 +44,7 @@ public class MemberResponse {
     private Set<GrantedAuthority> roles = new HashSet<>();
 
     public MemberResponse(Member member) {
-        this.memberId = memberId(member).getMemberId();
+        this.memberId = member.getMemberId();
         this.nickName = nickName(member).getNickName();
         this.isMan = member.isMan();
         this.birth = member.getBirth();
@@ -54,12 +53,12 @@ public class MemberResponse {
         this.email = email(member).getEmail();
         this.memberCreatedAt = member.getMemberCreatedAt();
         this.roles = member.getRoles().stream().
-                map(role -> new SimpleGrantedAuthority("ROLE_" + role.getValue())).
+                map(role -> new SimpleGrantedAuthority("ROLE_" + role.getDescription())).
                 collect(Collectors.toSet());
     }
 
 
-    public MemberId memberId(Member member) {
+    public String memberId(Member member) {
         return member.getMemberId();
     }
 

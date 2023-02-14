@@ -21,10 +21,10 @@ public class MemberUpdateService {
     private final MemberRepository memberRepository;
 
     @Transactional
-    public MemberResponse updateMember(Long id, MemberRequest memberRequest) {
-        Member member = memberFindById(id);
+    public MemberResponse updateMember(String  id, MemberRequest memberRequest) {
+        Member member = memberFindById(Long.valueOf(id));
 
-        member.updateMember(new MemberId(memberRequest.getMemberId()),
+        member.updateMember(String.valueOf(new MemberId(memberRequest.getMemberId())),
                 new NickName(memberRequest.getNickName()),
                 memberRequest.getPassword(),
                 new PhoneNumber(memberRequest.getPhoneNumber()),

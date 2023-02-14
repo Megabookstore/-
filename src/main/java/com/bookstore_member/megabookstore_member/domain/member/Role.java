@@ -3,11 +3,15 @@ package com.bookstore_member.megabookstore_member.domain.member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-@AllArgsConstructor
+
 @Getter
 public enum Role {
-    ADMIN("ROLE_ADMIN"),
-    NORMAL("ROLE_NORMAL");
+    ROLE_ADMIN("관리자"),
+    ROLE_NORMAL("일반");
 
-    private String value;
+    private String description;
+
+    Role(String description){
+        this.description = description;
+    }
 }

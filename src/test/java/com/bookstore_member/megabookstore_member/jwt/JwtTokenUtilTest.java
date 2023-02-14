@@ -1,14 +1,13 @@
 package com.bookstore_member.megabookstore_member.jwt;
 
-import com.bookstore_member.megabookstore_member.domain.converter.BooleanToYNConverter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 
-class JwtUtilTest {
+class JwtTokenUtilTest {
 
 
-    private JwtUtil jwtUtil;
+    private JwtProvider jwtUtil;
 
     private final String secretKey = "asdasdasdasdasdasdasdasdasdasdsadasdasdasaa";
 
@@ -19,7 +18,7 @@ class JwtUtilTest {
     public void testBefore() {
 
         System.out.println("testBefore......................");
-        jwtUtil = new JwtUtil();
+        jwtUtil = new JwtProvider();
 
 
     }

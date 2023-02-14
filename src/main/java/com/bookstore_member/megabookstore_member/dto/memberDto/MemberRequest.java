@@ -39,7 +39,7 @@ public class MemberRequest {
     public Member MemberRequestToMember() {
         return Member.builder()
                 .memberNo(memberNo)
-                .memberId(new MemberId(memberId))
+                .memberId(getMemberId())
                 .nickName(new NickName(nickName))
                 .isMan(isMan)
                 .birth(birth)

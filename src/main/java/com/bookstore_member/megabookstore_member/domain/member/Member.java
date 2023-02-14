@@ -6,14 +6,14 @@ import com.bookstore_member.megabookstore_member.domain.member.validation.Member
 import com.bookstore_member.megabookstore_member.domain.member.validation.NickName;
 import com.bookstore_member.megabookstore_member.domain.member.validation.PhoneNumber;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -23,7 +23,7 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Member {
+public class Member implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,7 +34,7 @@ public class Member {
 //    private Membership membership;
 
     @Embedded
-    private MemberId memberId;
+    private String memberId;
 
     @Embedded
     private NickName nickName;
@@ -65,7 +65,7 @@ public class Member {
         roles.add(role);
     }
 
-    public Member(Long memberNo,  MemberId memberId, NickName nickName, boolean isMan, LocalDateTime birth, String password, PhoneNumber phoneNumber, Email email, LocalDateTime memberCreatedAt) {
+    public Member(Long memberNo,  String memberId, NickName nickName, boolean isMan, LocalDateTime birth, String password, PhoneNumber phoneNumber, Email email, LocalDateTime memberCreatedAt) {
         this.memberNo = memberNo;
         this.memberId = memberId;
         this.nickName = nickName;
@@ -84,7 +84,7 @@ public class Member {
 
 
 
-    public void updateMember(MemberId memberId, NickName nickName, String password, PhoneNumber phoneNumber, Email email) {
+    public void updateMember(String  memberId, NickName nickName, String password, PhoneNumber phoneNumber, Email email) {
         if (Objects.nonNull(memberId)) {
             this.memberId = memberId;
         }
@@ -107,4 +107,33 @@ public class Member {
 
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }
